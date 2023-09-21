@@ -12,4 +12,5 @@ How to setup:
 
 
 4.run the test
-$npm test
+
+//$ $npm test
