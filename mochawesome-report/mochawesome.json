@@ -1,0 +1,214 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-09-21T16:25:53.360Z",
+    "end": "2023-09-21T16:26:20.912Z",
+    "duration": 27552,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "3c9b7946-bf57-4934-a5c4-6c7d940bccce",
+      "title": "",
+      "fullFile": "/Users/leolam/EasyShipProject2/test.js",
+      "file": "/test.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "cd7e55ee-0489-486f-be4a-21f9d443ca84",
+          "title": "Selenium Test",
+          "fullFile": "/Users/leolam/EasyShipProject2/test.js",
+          "file": "/test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"Selenium Test\"",
+              "fullTitle": "Selenium Test \"before all\" hook in \"Selenium Test\"",
+              "timedOut": false,
+              "duration": 4131,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser('chrome').build();",
+              "err": {},
+              "uuid": "8fa66104-92a9-4024-9115-867f6cc3f979",
+              "parentUUID": "cd7e55ee-0489-486f-be4a-21f9d443ca84",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"Selenium Test\"",
+              "fullTitle": "Selenium Test \"after all\" hook in \"Selenium Test\"",
+              "timedOut": false,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "16693f09-c6f6-4458-a112-16d0d2c006f1",
+              "parentUUID": "cd7e55ee-0489-486f-be4a-21f9d443ca84",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "Test 01: Verify click on the “Refine Search” will display “Dimensions” and “Product Category” fields",
+              "fullTitle": "Selenium Test Test 01: Verify click on the “Refine Search” will display “Dimensions” and “Product Category” fields",
+              "timedOut": false,
+              "duration": 9664,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try{\n    await driver.get(url);\n    const WebFormSection = await driver.wait(until.elementLocated(By.className('c-rates-calculator-section__inputs')), { timeout: 300000 });\n    const mainWindowHandle = await driver.getWindowHandle();\n    const windowHandles = await driver.getAllWindowHandles();\n    for (const handle of windowHandles) {\n        if (handle !== mainWindowHandle) {\n          await driver.switchTo().window(handle);\n          break;\n        }\n    }\n    await driver.close();\n    await driver.switchTo().window(mainWindowHandle);\n\n    const element = await webFormSection.findElement(By.xpath('//*[@id=\"__layout\"]/div/div[2]/div[2]/div/section[1]/div[1]/div[2]/form/div/p'));\n    await element.click();\n    const field = await driver.wait(until.elementLocated(By.xpath('//*[@id=\"rates.inputs.product-category\"]'), 50000));\n    const isDisplayed = await field.isDisplayed();\n    expect(isDisplayed).to.equal(true);\n} catch(error){\n    console.error(error);\n}",
+              "err": {},
+              "uuid": "ba2ebae1-960a-4d97-9dbd-d2fc48bbe3ee",
+              "parentUUID": "cd7e55ee-0489-486f-be4a-21f9d443ca84",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Test 02: Verify selecting country With Zip code in the “Shipping From” pull down menu will result as showing the “Zip Code” textbox in the right-hand side of “Shipping From” menu",
+              "fullTitle": "Selenium Test Test 02: Verify selecting country With Zip code in the “Shipping From” pull down menu will result as showing the “Zip Code” textbox in the right-hand side of “Shipping From” menu",
+              "timedOut": false,
+              "duration": 5165,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try{\nawait driver.get(url);\nconst WebFormSection = await driver.wait(until.elementLocated(By.className('c-rates-calculator-section__inputs')), { timeout: 300000 });\nconst mainWindowHandle = await driver.getWindowHandle();\nconst windowHandles = await driver.getAllWindowHandles();\nfor (const handle of windowHandles) {\n    if (handle !== mainWindowHandle) {\n      await driver.switchTo().window(handle);\n      break;\n    }\n}\nawait driver.close();\nawait driver.switchTo().window(mainWindowHandle);\n    \nconst webFormSection = await driver.findElement(By.className('c-rates-calculator-section__inputs'));\nconst dropdown = await webFormSection.findElement(By.xpath('//*[@id=\"rates.inputs.origin\"]'));\nconst optionValue = '54';\nawait dropdown.findElement(By.css(`option[value=\"${optionValue}\"]`)).click();\nconst field = await driver.wait(until.elementLocated(By.xpath('//*[@id=\"rates.inputs.origin-zip-code\"]')), 5000);\nconst isDisplayed = await field.isDisplayed();\nexpect(isDisplayed).to.equal(true);\n    } catch(error){\nconsole.error(error);\n    }",
+              "err": {},
+              "uuid": "e6058869-3313-4e8b-8692-5e9b83ec5c49",
+              "parentUUID": "cd7e55ee-0489-486f-be4a-21f9d443ca84",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Test 03: Verify click on “Calculate” with correct input will display shipping option with expected column of information",
+              "fullTitle": "Selenium Test Test 03: Verify click on “Calculate” with correct input will display shipping option with expected column of information",
+              "timedOut": false,
+              "duration": 2451,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try{\nawait driver.get(url);\nconst WebFormSection = await driver.wait(until.elementLocated(By.className('c-rates-calculator-section__inputs')), { timeout: 300000 });\nconst mainWindowHandle = await driver.getWindowHandle();\nconst windowHandles = await driver.getAllWindowHandles();\nfor (const handle of windowHandles) {\n    if (handle !== mainWindowHandle) {\n      await driver.switchTo().window(handle);\n      break;\n    }\n}\nawait driver.close();\nawait driver.switchTo().window(mainWindowHandle);\n\n   //shipping From\nconst webFormSection = await driver.findElement(By.className('c-rates-calculator-section__inputs'));\nconst shippingFrom = await webFormSection.findElement(By.xpath('//*[@id=\"rates.inputs.origin\"]'));\nconst shippingFromValue = '54';\nawait shippingFrom.findElement(By.css(`option[value=\"${shippingFromValue}\"]`)).click();\n//Shipping From Zip\nconst shippingZip = await webFormSection.findElement(By.xpath('//*[@id=\"rates.inputs.origin-zip-code\"]'));\nawait shippingZip.sendKeys('10001');\n\n//Shipping To\nconst shippingTo = await webFormSection.findElement(By.xpath('//*[@id=\"rates.inputs.destination\"]'));\nconst shippingToValue = '14';\nawait shippingTo.findElement(By.css(`option[value=\"${shippingToValue}\"]`)).click();\n//Parcel weight\nconst parcelWeight = await webFormSection.findElement(By.xpath('//*[@id=\"rates.inputs.weight\"]'));\nawait parcelWeight.sendKeys('1.5');\n//click calculate\nconst calculateButton = await webFormSection.findElement(By.xpath('//*[@id=\"__layout\"]/div/div[2]/div[2]/div/section[1]/div[1]/div[2]/form/button'));\nawait calculateButton.click();\n//check display column of information\nconst courier = await driver.wait(until.elementLocated(By.xpath('//*[@id=\"__layout\"]/div/div[2]/div[2]/div/section[1]/div[2]/div/div[1]/div[2]/div/div[1]/p[1]')), { timeout: 50000 });\nconst isDisplayed = [];\nisDisplayed[1] = await courier.isDisplayed();\nconst deliveryTime = await driver.wait(until.elementLocated(By.xpath('//*[@id=\"__layout\"]/div/div[2]/div[2]/div/section[1]/div[2]/div/div[1]/div[2]/div/div[1]/p[2]')), { timeout: 50000 });\nisDisplayed[2] = await deliveryTime.isDisplayed();\nconst tracking = await driver.wait(until.elementLocated(By.xpath('//*[@id=\"__layout\"]/div/div[2]/div[2]/div/section[1]/div[2]/div/div[1]/div[2]/div/div[1]/p[3]')), { timeout: 50000 });\nisDisplayed[3] = await tracking.isDisplayed();\nconst rating = await driver.wait(until.elementLocated(By.xpath('//*[@id=\"__layout\"]/div/div[2]/div[2]/div/section[1]/div[2]/div/div[1]/div[2]/div/div[1]/p[4]')), { timeout: 50000 });\nisDisplayed[4] = await rating.isDisplayed();\nconst serviceOption = await driver.wait(until.elementLocated(By.xpath('//*[@id=\"__layout\"]/div/div[2]/div[2]/div/section[1]/div[2]/div/div[1]/div[2]/div/div[1]/p[5]')), { timeout: 50000 });\nisDisplayed[5] = await serviceOption.isDisplayed();\nconst totalCost = await driver.wait(until.elementLocated(By.xpath('//*[@id=\"__layout\"]/div/div[2]/div[2]/div/section[1]/div[2]/div/div[1]/div[2]/div/div[1]/p[6]')), { timeout: 50000 });\nisDisplayed[6] = await totalCost.isDisplayed();\nfor (let i = 0; i < isDisplayed.length; i++) {\n    expect(myArray[i]).to.equal(true);\n  }\n} catch(error){\n    console.error(error);\n}",
+              "err": {},
+              "uuid": "bfbe28e5-18fc-4a68-a8c3-0535c7e015a0",
+              "parentUUID": "cd7e55ee-0489-486f-be4a-21f9d443ca84",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Test 04: Verify click on “Calculate” for shipments that from NO couriers, the calculator will result as no courier results",
+              "fullTitle": "Selenium Test Test 04: Verify click on “Calculate” for shipments that from NO couriers, the calculator will result as no courier results",
+              "timedOut": false,
+              "duration": 2604,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try{\nawait driver.get(url);\nconst WebFormSection = await driver.wait(until.elementLocated(By.className('c-rates-calculator-section__inputs')), { timeout: 300000 });\nconst mainWindowHandle = await driver.getWindowHandle();\nconst windowHandles = await driver.getAllWindowHandles();\nfor (const handle of windowHandles) {\n    if (handle !== mainWindowHandle) {\n      await driver.switchTo().window(handle);\n      break;\n    }\n}\nawait driver.close();\nawait driver.switchTo().window(mainWindowHandle);\n\n   //shipping From\nconst webFormSection = await driver.findElement(By.className('c-rates-calculator-section__inputs'));\nconst shippingFrom2 = await webFormSection.findElement(By.xpath('//*[@id=\"rates.inputs.origin\"]'));\nconst shippingFromValue2 = '5';\nawait shippingFrom2.findElement(By.css(`option[value=\"${shippingFromValue2}\"]`)).click();\n\n//Shipping To\nconst shippingTo2 = await webFormSection.findElement(By.xpath('//*[@id=\"rates.inputs.destination\"]'));\nconst shippingToValue2 = '14';\nawait shippingTo2.findElement(By.css(`option[value=\"${shippingToValue2}\"]`)).click();\n//Parcel weight\nconst parcelWeight2 = await webFormSection.findElement(By.xpath('//*[@id=\"rates.inputs.weight\"]'));\nawait parcelWeight2.sendKeys('1.5');\n//click calculate\nconst calculateButton2 = await webFormSection.findElement(By.xpath('//*[@id=\"__layout\"]/div/div[2]/div[2]/div/section[1]/div[1]/div[2]/form/button'));\nawait calculateButton2.click();\n//chceck element displayed\nconst noCourierMsg = await driver.wait(until.elementLocated(By.xpath('//*[@id=\"__layout\"]/div/div[2]/div[2]/div/section[1]/div[2]/div/div/div[2]/div/div/div/p[1]')), { timeout: 50000 });\nconst isDisplayed = await noCourierMsg.isDisplayed();\nexpect(isDisplayed).to.equal(true);\n} catch(error){\n    console.error(error);\n}",
+              "err": {},
+              "uuid": "0bef59aa-3f38-4bfe-92af-735d49d97125",
+              "parentUUID": "cd7e55ee-0489-486f-be4a-21f9d443ca84",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Test 05: Verify after click on “Calculate” button with correct input, will show a link “Schedule a call with our shipping experts”",
+              "fullTitle": "Selenium Test Test 05: Verify after click on “Calculate” button with correct input, will show a link “Schedule a call with our shipping experts”",
+              "timedOut": false,
+              "duration": 3508,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try{\n    await driver.get(url);\n    const WebFormSection = await driver.wait(until.elementLocated(By.className('c-rates-calculator-section__inputs')), { timeout: 300000 });\n    const mainWindowHandle = await driver.getWindowHandle();\n    const windowHandles = await driver.getAllWindowHandles();\n    for (const handle of windowHandles) {\n        if (handle !== mainWindowHandle) {\n          await driver.switchTo().window(handle);\n          break;\n        }\n    }\n    await driver.close();\n    await driver.switchTo().window(mainWindowHandle);\n    \n   //shipping From\n    const webFormSection = await driver.findElement(By.className('c-rates-calculator-section__inputs'));\n    const shippingFrom = await webFormSection.findElement(By.xpath('//*[@id=\"rates.inputs.origin\"]'));\n    const shippingFromValue = '54';\n    await shippingFrom.findElement(By.css(`option[value=\"${shippingFromValue}\"]`)).click();\n    //Shipping From Zip\n    const shippingZip = await webFormSection.findElement(By.xpath('//*[@id=\"rates.inputs.origin-zip-code\"]'));\n    await shippingZip.sendKeys('10001');\n    \n    //Shipping To\n    const shippingTo = await webFormSection.findElement(By.xpath('//*[@id=\"rates.inputs.destination\"]'));\n    const shippingToValue = '14';\n    await shippingTo.findElement(By.css(`option[value=\"${shippingToValue}\"]`)).click();\n\n    //Parcel weight\n    const parcelWeight = await webFormSection.findElement(By.xpath('//*[@id=\"rates.inputs.weight\"]'));\n    await parcelWeight.sendKeys('1.5');\n\n    //click calculate\n    const calculateButton = await webFormSection.findElement(By.xpath('//*[@id=\"__layout\"]/div/div[2]/div[2]/div/section[1]/div[1]/div[2]/form/button'));\n    await calculateButton.click();\n     //chceck element displayed\n    const shippingExpert = await driver.wait(until.elementLocated(By.xpath('//*[@id=\"__layout\"]/div/div[2]/div[2]/div/section[1]/div[2]/div/div/div[2]/div/div[4]/p/span')), { timeout: 50000 });\n    const isDisplayed = await shippingExpert.isDisplayed();\n    expect(isDisplayed).to.equal(true);\n} catch (error){\n    console.error(error);\n}",
+              "err": {},
+              "uuid": "9540745e-1ad9-4a6e-b30f-9e9cb47d1d29",
+              "parentUUID": "cd7e55ee-0489-486f-be4a-21f9d443ca84",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ba2ebae1-960a-4d97-9dbd-d2fc48bbe3ee",
+            "e6058869-3313-4e8b-8692-5e9b83ec5c49",
+            "bfbe28e5-18fc-4a68-a8c3-0535c7e015a0",
+            "0bef59aa-3f38-4bfe-92af-735d49d97125",
+            "9540745e-1ad9-4a6e-b30f-9e9cb47d1d29"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 23392,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 600000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 600000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
